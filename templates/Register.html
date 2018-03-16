@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <style>
+        .login {
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 80px;
+        }
+        .f1{
+            position: absolute;
+            height:100px;
+            width:100px;
+            top:0;
+            left:0;
+            opacity:0;}
+
+    </style>
+</head>
+<body>
+<div class="login">
+    <h3>注册页面</h3>
+
+    <form class="form-horizontal" method="POST" action="/Register.html" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+                {{ new_user.username }}{{ new_user.errors.username.0 }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">邮箱</label>
+            <div class="col-sm-10">
+                {{ new_user.email }}{{ new_user.errors.email.0 }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                {{ new_user.password }}{{ new_user.errors.password.0 }}
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-10">
+                {{ new_user.password2 }}{{ new_user.errors.password2.0 }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">验证码</label>
+            <div class="col-sm-5">
+                {{ new_user.code }}{{ new_user.errors.code.0 }}
+            </div>
+            <div class="col-sm-5">
+                <img id="check_code" src="/check_code/" alt="点击刷新">{{ err_code }}
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-default" value="注册">{{ err_login }}
+                <a href="/Login.html">登录</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script src="/static/plugins/jquery-3.3.1.js"></script>
+<script>
+    $("#check_code").click(function(){
+        $(this).attr("src",$(this).attr("src")+"?")
+    });
+</script>
+
+</body>
+</html>

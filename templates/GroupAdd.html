@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3>添加用户组</h3>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>用户组名：<input type="text" name="usergroup" placeholder="用户组">{{ err_msg }}</p>
+        <input type="submit">
+    </form>
+
+{% endblock %}

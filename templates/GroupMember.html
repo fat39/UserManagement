@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <table class="table table-striped table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th>用户组</th>
+                <th>成员</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ caption }}</td>
+                <td>
+                    {% for user in user_list %}
+                        <div>{{ user.username }}</div>
+                    {% endfor %}
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

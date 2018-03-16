@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3>用户管理</h3>
+    <a href="/UserAdd/">添加用户</a>
+    <table class="table table-striped table-bordered table-hover ">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>账号</th>
+            <th>用户组</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for user in user_list %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>
+                        {% for obj in u2g_list %}
+                            {% if user.id == obj.user.id %}
+                                <div>{{ obj.group.caption }}</div>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </td>
+                    <td>
+                        <a href="/UserDetail.html?uid={{ user.id }}">用户详细</a>
+                        |
+                        <a href="/UserEdit.html?uid={{ user.id }}">编辑</a>
+                        |
+                        <a href="/UserDel/?uid={{ user.id }}">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

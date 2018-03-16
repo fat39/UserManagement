@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{#    <h3>添加用户</h3>#}
+{#    <form method="POST" action="">#}
+{#        {% csrf_token %}#}
+{#        <p>用户名：<input type="text" name="username" placeholder="username"></p>#}
+{#        <p>密码：123</p>#}
+{#        <p>邮箱：<input type="text" name="email" placeholder="email"></p>#}
+{#        <input type="submit">#}
+{#    </form>#}
+    <h3>添加用户</h3>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>用户名：{{ obj.username }}{{ obj.errors.username.0 }}</p>
+        <p>密码：123</p>
+        <p>邮箱：{{ obj.email }}{{ obj.errors.email.0 }}</p>
+        <input type="submit">
+    </form>
+
+{% endblock %}

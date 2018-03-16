@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3>用户组管理</h3>
+    <a href="/GroupAdd/">添加用户组</a>
+    <table class="table table-striped table-bordered table-hover ">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>用户组</th>
+            <th>成员</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for group in group_list %}
+                <tr>
+                    <td>{{ group.id }}</td>
+                    <td>{{ group.caption }}</td>
+                    <td>
+                        {% for obj in u2g_list %}
+                            {% if obj.group_id == group.id %}
+                                <span>{{ obj.user.username }}</span>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </td>
+                    <td>
+                        <a href="/GroupMember.html?gid={{ group.id }}&caption={{ group.caption }}">查询成员</a>
+                        |
+                        <a href="/GroupEdit.html?gid={{ group.id }}&caption={{ group.caption }}">编辑</a>
+                        |
+                        <a href="/GroupDel/?gid={{ group.id }}">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

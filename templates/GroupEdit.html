@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block css %}
+    <style>
+        #alluser,#allmember{
+            width:150px;
+            height:200px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h3>编辑用户组</h3>
+    <form method="POST" action="/GroupEdit.html?gid={{ gid }}">
+        {% csrf_token %}
+        <p>用户组：<input type="text" name="caption" value="{{ caption }}">{{ err_msg }}</p>
+        <div>
+            <select id="alluser" multiple name="tmp" size="10">
+                {% for user in users_list %}
+                    {% if user not in member_list %}
+                        <option value="{{ user.id }}">{{ user.id }} {{ user.username }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <input id="toright" type="button" value=">">
+            <input id="allright" type="button" value=">>">
+            <input id="toleft" type="button" value="<">
+            <input id="allleft" type="button" value="<<">
+
+            <select id="allmember" multiple size="10" name="member_list">
+                {% for member in member_list %}
+                    <option value="{{ member.id }}">{{ member.id }} {{ member.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+
+        <input id="group_submit" type="submit">
+
+    </form>
+{% endblock %}
+
+
+{% block script %}
+    <script src="/static/plugins/jquery-3.3.1.js"></script>
+    <script>
+        $(function(){
+            // 选中的选项移动到右面
+            $("#toright").click(function(){
+                $('#alluser option:selected').appendTo("#allmember");
+            });
+            // 所有选项移动到右面
+            $("#allright").click(function(){
+                $("#alluser option").appendTo("#allmember")
+            });
+            // 选中的选项移动到左边
+            $("#toleft").click(function(){
+                $("#allmember option:selected").appendTo("#alluser")
+            })
+            // 所有的选项移动到左边
+            $("#allleft").click(function(){
+                $("#allmember option").appendTo("#alluser")
+            })
+            // 提交时，把左边的所有选项都选上
+            $("#group_submit").click(function(){
+                $("#allmember option").prop("selected","selected")
+            })
+        })
+
+    </script>
+{% endblock %}

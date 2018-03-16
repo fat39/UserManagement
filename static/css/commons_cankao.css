@@ -1,0 +1,81 @@
+body{
+    margin:0;
+}
+.left{
+    float:left
+}
+.right{
+    float:right
+}
+.hide{
+    display: hide;
+}
+.pg-header{
+    height:48px;
+    min-width: 1190px;
+    background-color: dodgerblue;
+    line-height: 48px;
+}
+.pg-header .logo{
+    font-size: 18px;
+    color: white;
+    width: 200px;
+    text-align: center;
+    border-right: 1px solid darkslateblue;
+}
+.pg-header .rmenus a{
+    display: inline-block;
+    padding:0 15px;
+    color: white;
+}
+.pg-header .rmenus a:hover{
+    background-color: cadetblue;
+}
+.pg-header  .avatar{
+    padding: 0 20px;
+}
+.pg-header .avatar:hover .user_info a{
+    display: block;
+}
+.pg-header .avatar:hover .user_info{
+    display:block;
+}
+.pg-header .avatar img{
+    border-radius: 50%;
+    height:40px;
+    width:40px;
+}
+.pg-header .avatar .user_info{
+    display: none;
+    position:absolute;
+    width:200px;
+    top:48px;
+    right: 0;
+    border: 1px solid #dddddd;
+    background-color: white;
+    z-index: 100;
+}
+
+.pg-body .menus{
+    width:200px;
+    position:absolute;
+    left:0;
+    bottom: 0;
+    top:48px;
+    border-right: 1px solid #dddddd;
+    background-color: #dddddd;
+}
+.pg-body .menus a{
+    display: block;
+    padding: 10px 5px;
+    border-bottom: 1px solid #ffffff;
+}
+.content{
+    position:absolute;
+    left: 200px;
+    right:0;
+    top:48px;
+    bottom: 0;
+    overflow: scroll;
+    z-index: 99;
+}

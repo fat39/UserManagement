@@ -99,3 +99,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+rbac/migrations/
+app01/migrations/

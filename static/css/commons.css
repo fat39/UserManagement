@@ -1,0 +1,56 @@
+body{
+    margin:0;
+}
+.left{
+    float:left
+}
+.right{
+    float:right
+}
+.hide{
+    display: hide;
+}
+
+.pg-header{
+    background-color:dodgerblue;
+    min-width: 1190px;
+    height: 48px;
+    line-height: 48px;
+}
+
+.pg-header .logo{
+    font-size: 18px;
+    color: white;
+    width: 200px;
+    text-align: center;
+    /*border-right: 1px solid darkslateblue;*/
+}
+
+.pg-body .menu{
+    background-color: #dddddd;
+    position:absolute;
+    top:48px;
+    bottom:0;
+    left:0;
+    width:200px;
+}
+
+.pg-body .menu a{
+    display: block;
+    padding: 10px 5px;
+    border-bottom: 1px solid #ffffff;
+
+}
+
+
+
+.pg-body .content{
+    position:absolute;
+    top:48px;
+    bottom:0;
+    right:0;
+    overflow: scroll;
+    left:200px;
+
+}
+

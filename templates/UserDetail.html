@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3>UserDetail</h3>
+    <table class="table table-striped table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th>用户ID</th>
+                <th>用户名</th>
+                <th>邮箱</th>
+                <th>用户组</th>
+                <th>昵称</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ user_obj.id }}</td>
+                <td>{{ user_obj.username }}</td>
+                <td>{{ user_obj.email }}</td>
+                <td>
+                    {% for group_obj in group_obj_list %}
+                        <div>{{ group_obj.caption }}</div>
+                    {% endfor %}
+
+                </td>
+                <td>{{ user_obj.userinfo.nickname }}</td>
+                <td>{{ user_obj.userinfo.age }}</td>
+                <td>{{ user_obj.userinfo.get_gender_display }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

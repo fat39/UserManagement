@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3>编辑用户</h3>
+    <form method="POST" action="/UserEdit.html?uid={{ user_obj.id }}">
+        {% csrf_token %}
+        <p>用户名：<input type="text" value="{{ user_obj.username }}" name="uname"></p>
+        <p>email：<input type="text" value="{{ user_obj.email }}" name="email"></p>
+        <p>
+            <select multiple="multiple" name="ugroup" id="test"  size="5">
+                {% for usergroup in usergroup_list %}
+                    {% if usergroup in my_group_list %}
+                        <option selected value="{{ usergroup.id }}">{{ usergroup.caption }}</option>
+                    {% else %}
+                        <option value="{{ usergroup.id }}">{{ usergroup.caption }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit">
+    </form>
+{% endblock %}
